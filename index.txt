@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header>
+        <h1>Mon Blog</h1>
+        <button id="mode-toggle">Mode Sombre</button>
+        <nav class="hamburger-menu">
+            <button id="hamburger-button">☰</button>
+            <div id="nav-links">
+                <a href="#" id="add-article">Ajouter Article</a>
+                <a href="#">Voir Articles</a>
+            </div>
+        </nav>
+    </header>
+    <main id="content">
+        <!-- Contenu des articles -->
+    </main>
+    <script src="script/script.js"></script>
+</body>
+</html>

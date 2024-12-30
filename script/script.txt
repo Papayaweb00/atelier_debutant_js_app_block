@@ -1,0 +1,41 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const modeToggle = document.getElementById('mode-toggle');
+    const hamburgerButton = document.getElementById('hamburger-button');
+    const navLinks = document.getElementById('nav-links');
+    const content = document.getElementById('content');
+
+    // Initialiser le mode clair/sombre
+    modeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.body.classList.toggle('light-mode');
+    });
+
+    // Initialiser le menu hamburger
+    hamburgerButton.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Fonction pour ajouter un article
+    document.getElementById('add-article').addEventListener('click', () => {
+        const article = prompt('Entrez le contenu de l\'article:');
+        if (article) {
+            const articleElement = document.createElement('div');
+            articleElement.innerHTML = `<p>${article}</p>
+                                        <button class="edit-article">Modifier</button>
+                                        <button class="delete-article">Supprimer</button>`;
+            content.appendChild(articleElement);
+
+            // Ajouter les événements pour modifier et supprimer
+            articleElement.querySelector('.edit-article').addEventListener('click', () => {
+                const newContent = prompt('Modifier l\'article:', article);
+                if (newContent) {
+                    articleElement.querySelector('p').textContent = newContent;
+                }
+            });
+
+            articleElement.querySelector('.delete-article').addEventListener('click', () => {
+                content.removeChild(articleElement);
+            });
+        }
+    });
+});

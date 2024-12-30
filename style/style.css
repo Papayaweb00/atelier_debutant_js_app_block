@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bebas+Neue&family=Cookie&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Lobster&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Declaration variable */
+:root {
+    --sombre: black;
+    --clair: white;
+}
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Fin reset */
+
+body.moon {
+    background-color: var(--sombre);
+}
+
+body.moon nav {
+    background-color: var(--clair);
+    color: var(--sombre);
+}
+
+body.moon nav .color button.active {
+    background-color: var(--sombre);
+    color: var(--clair);
+}
+
+body.moon #blog {
+    color: var(--clair);
+}
+
+/* navbar */
+
+.nav_brand {
+    font-family: "Amatic SC", serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 2em;
+}
+
+/* ------Mode sombre et clair----------- */
+nav .color {
+    display: flex;
+    align-items: center;
+    border-radius: 9px;
+}
+
+nav .color button i {
+    padding: 9px 20px;
+    cursor: pointer;
+
+}
+
+nav .color button {
+    border-radius: 8px;
+    border: none;
+    transition: all 1000ms ease;
+}
+
+nav .color .sun.active,
+nav .color .moon.active {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+nav .color .moon.no {
+    background-color: var(--sombre);
+    color: var(--clair);
+}
+
+nav .color .sun.no {
+    background-color: var(--clair);
+    color: var(--sombre);
+}
+
+body.moon nav ul li a {
+    color: var(--sombre);
+}
+
+body.moon .ajout form fieldset {
+    color: var(--clair);
+}
+
+/* -----------Fin mode------------ */
+
+/* ------------Burger menu------------ */
+nav .cache {
+    display: none;
+}
+
+nav .bur {
+    font-size: 2em;
+    display: none;
+}
+
+/* ------------fin Burger------------ */
+nav {
+    background-color: var(--sombre);
+}
+
+nav,
+nav ul {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 9px 0;
+    width: 100%;
+}
+
+nav ul {
+    gap: 25px;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+/* ___fin navbar__ */
+
+
+/* formulaire d'ajout */
+
+.ajout form fieldset {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    padding: 25px;
+    gap: 25px;
+    border-radius: 15px;
+}
+
+form {
+    padding: 15px 95px;
+}
+
+.ajout form fieldset .lab {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ajout form fieldset .lab label {
+    font-size: 1.3em;
+}
+
+.ajout form fieldset legend {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.7em;
+}
+
+input[type=text] {
+    height: 5vh;
+    padding: 5px;
+    font-size: 1.3em;
+    border-radius: 5px;
+    border: 1px solid black;
+    outline: none;
+}
+
+input[type=submit] {
+    font-size: 1.3em;
+    width: 30%;
+    margin: 0 auto;
+    padding: 9px 0;
+    border-radius: 15px;
+    border: none;
+}
+
+/* __fin formulaire__ */
+
+/* contenu du blog */
+#blog {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+#blog .div_content {
+    display: flex;
+    padding: 55px;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+}
+
+.form_img {
+    padding: 25px;
+    height: 10%;
+    /* width: 10%; */
+    border-radius: 10px;
+    background-color: greenyellow;
+}
+
+.div_content_v {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: justify;
+    gap: 9px;
+}
+
+/* --------------Button modif et suppr--------------- */
+.content_btn {
+    display: flex;
+    gap: 25px;
+
+}
+
+.modif,
+.suppr {
+    font-size: 1em;
+    margin: 0 auto;
+    padding: 9px 15px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+}
+
+/* -------------fin--------------- */
+
+/* Fin */
+
+/* Supprime */
+#blog .div_content.supprimer {
+    display: none;
+}
+
+/* fin sup */
+
+.form {
+    display: block;
+    /* position: fixed; */
+}
+
+/* Responsive */
+
+@media screen and (max-width: 768px) {
+
+    /* formulaire d'ajout */
+    form {
+        padding: 19px;
+    }
+
+    input[type=submit] {
+        width: 50%;
+    }
+
+    #blog {
+        display: grid;
+        /* grid-template-columns: repeat(1, 1fr); */
+        gap: 15px;
+    }
+
+    #blog .div_content {
+        flex-direction: column;
+    }
+
+    .form_img {
+        padding: 25px;
+        height: 10px;
+        /* width: 10%; */
+        border-radius: 10px;
+        background-color: greenyellow;
+    }
+
+}
+
+@media screen and (max-width: 568px) {
+    #blog {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+    }
+
+    .form_img {
+        padding: 25px;
+        height: 10px;
+        /* width: 10%; */
+        border-radius: 10px;
+        background-color: greenyellow;
+    }
+
+}

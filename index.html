@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <nav>
+        <h1 class="nav_brand">Blog</h1>
+        <div class="color">
+            <button class="sun active"><i class="fa-solid fa-sun"></i></button>
+            <button class="moon no"><i class="fa-solid fa-moon"></i></button>
+        </div>
+        <ul id="nav_ul">
+            <li><a href="#blog">Acceuil</a></li>
+            <li><a href="#ajout">Ajouter des articles</a></li>
+        </ul>
+
+        <!-- <div class="toggle">
+            <i class="fa-solid fa-bars bur"></i>
+            <i class="fa-solid fa-x cache"></i>
+        </div> -->
+    </nav>
+
+    <div id="blog">
+
+    </div>
+
+    <section class="ajout">
+        <form action="mailto:pyaffa25@gmail.com" method="post" id="form">
+            <fieldset>
+                <legend>Ajouter vos Article</legend>
+                <div class="lab">
+                    <label for="titre">Nom de l'article</label>
+                    <input type="text" placeholder="Titre article" id="titre" name="titre">
+                </div>
+                <div class="lab">
+                    <label for="titre">Contenu de l'article</label>
+                    <input type="text" placeholder="Contenu article" id="content" name="content">
+                </div>
+                <input type="submit" value="Enregistrer" id="submit">
+            </fieldset>
+        </form>
+    </section>
+
+    <footer>
+
+    </footer>
+
+    <script src="script/mode_et_respon.js" async></script>
+    <script src="script/objet.js" defer></script>
+    <script src="script/article.js" defer></script>
+    <script src="script/script.js" defer></script>
+</body>
+
+</html>
