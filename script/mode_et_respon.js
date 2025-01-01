@@ -49,3 +49,26 @@ function initStorage() {
 
 // appel function
 initStorage();
+
+
+// Menu burger
+const ul = document.querySelector('#nav_ul');
+const toggle = document.querySelector('.toggle');
+const cacher = document.querySelector('.cache');
+const list = document.querySelectorAll('#nav_ul li');
+
+const menuBurger = (a, b, c, d, e)=>{
+    a.addEventListener('click', ()=>{
+        b.classList.add(c);
+    });
+    d.addEventListener('click', ()=>{
+        b.classList.remove(c);
+    });
+    e.forEach(list => {
+        list.addEventListener('click', ()=>{
+            b.classList.remove('active');
+        })
+    })
+}
+
+menuBurger(toggle, ul, 'active', cacher, list);

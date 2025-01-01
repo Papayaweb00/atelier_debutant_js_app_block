@@ -1,4 +1,4 @@
-
+localStorage.setItem('blogContent', JSON.stringify(blogContent));
 // Selection div #blog
 const blog = document.querySelector("#blog");
 
