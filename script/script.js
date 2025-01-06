@@ -1,9 +1,13 @@
 
+// Appel des elements avec le DOM
 let titreArticle = document.querySelector('#titre');
+
 let contenteArticle = document.querySelector('#content');
+
 let formulaire = document.querySelector('#form');
 let btnsubmit = document.querySelector('#submit');
 
+// Ajout des messages d'erreurs
 function showerror(input, message) {
     const errorSpan = document.createElement('span');
     errorSpan.className = 'error';
@@ -11,11 +15,13 @@ function showerror(input, message) {
     input.parentElement.appendChild(errorSpan);
 }
 
+// Suppression des messages d'erreurs
 function clearerror() {
     const errorSpans = document.querySelectorAll('.error');
     errorSpans.forEach(span => span.remove());
 }
 
+// div qui regle le contenue du blog
 function blogcreate(titre, content) {
     const divform = create('div', blog, `div_content`);
     // console.log(divform);
@@ -38,6 +44,8 @@ function blogcreate(titre, content) {
     // ecouteur d'evenement pour supprimer
     btnform2.addEventListener('click', (e) => {
         localStorage.removeItem('form');
+        localStorage.removeItem('titre');
+        localStorage.removeItem('content');
         // accés à l'élément DOM 
         // qui a déclenché un événement
         const clickedButton = e.target;
@@ -143,9 +151,16 @@ formulaire.addEventListener('submit', (e) => {
         e.preventDefault();
         e.stopPropagation();
     } else {
-        blogcreate(titreArticle.value, contenteArticle.value);
+        const divform = blogcreate(titreArticle.value, contenteArticle.value);
 
         console.log(`Titre: ${titre}\nText: ${content}`);
+        let i = 0;
+
+        if (isvalid) {
+            i++;
+            localStorage.setItem('titre', titreArticle.value);
+            localStorage.setItem('content', contenteArticle.value);
+        }
 
         contenteArticle.style.border = 'none';
         contenteArticle.style.boxShadow = "none";
@@ -154,17 +169,19 @@ formulaire.addEventListener('submit', (e) => {
     }
 })
 
-const locform = JSON.parse(localStorage.getItem('form'));
-// const locform2 = JSON.parse(localStorage.getItem('titre'));
-// const locform2 = titreArticle.value;
-// const locform3 = JSON.parse(localStorage.getItem('text'));
-// const locform3 = contenteArticle.value;
-if (locform != null) {
-    blogcreate(titre, content);
-    // formulaire.reset();
+function sauvegarde() {
+    const locform = JSON.parse(localStorage.getItem('form'));
 
-    // console.log(`Titre: ${locform2}\nText: ${locform3}`);
+    const recup = {
+        titrerecup: localStorage.getItem('titre'),
+        contentrecup: localStorage.getItem('content'),
+    }
 
+    if (locform != null) {
+        blogcreate(recup.titrerecup, recup.contentrecup);
+    }
 }
+
+sauvegarde()
 
 
