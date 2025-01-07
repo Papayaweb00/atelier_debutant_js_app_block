@@ -51,5 +51,6 @@ const renderPosts = async () => {
         const p3 = create('p', div_content, 'date', post.date);
     });
 }
+// console.log(formmodif);
 
 window.addEventListener('DOMContentLoaded', () => renderPosts());

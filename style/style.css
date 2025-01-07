@@ -14,7 +14,6 @@ footer {
     background-color: var(--sombre);
     color: var(--clair);
     justify-content: center;
-    /* align-items: center;  */
     gap: 35px;
     padding: 25px 0;
     width: 100%;
@@ -39,6 +38,7 @@ footer #footer_ul li a {
     text-decoration: none;
     color: white;
 }
+
 /* fin */
 
 /* reset */
@@ -65,10 +65,12 @@ body.moon nav .color button.active {
     background-color: var(--sombre);
     color: var(--clair);
 }
+
 body.moon footer {
     background-color: var(--clair);
     color: var(--sombre);
 }
+
 body.moon footer #footer_ul li a {
     color: var(--sombre);
 }
@@ -80,6 +82,7 @@ body.moon #blog {
 body.moon nav #nav_ul {
     background-color: var(--sombre);
 }
+
 body.moon #detail {
     color: white;
 }
@@ -300,12 +303,35 @@ input[type=submit] {
 .modif {
     background-color: #18aa18;
     color: white;
+    position: relative;
 }
 
 .suppr {
     background-color: rgb(250, 24, 24);
     color: white;
 }
+
+#modif {
+    /* width: 95%; */
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    top: 100px;
+    left: 0;
+    right: 0;
+    display: none;
+}
+
+#modif.active {
+    display: flex;
+}
+
+/* __--modif__formulaire--__ */
+.erreur {
+    border: 3px solid red;
+}
+/* fin */
 
 .modif,
 .suppr {
@@ -388,6 +414,7 @@ input[type=submit] {
         position: absolute;
         background-color: var(--clair);
         top: -100%;
+        z-index: 10000;
         left: 0;
         right: 0;
         align-items: center;
@@ -424,7 +451,7 @@ input[type=submit] {
     footer #footer_ul {
         flex-direction: column;
     }
-    
+
 }
 
 /* ---------Responsive cote mobile------------ */
@@ -459,7 +486,7 @@ input[type=submit] {
     input[type=text] {
         width: 90%;
     }
-    
+
     textarea {
         width: 90%;
     }
