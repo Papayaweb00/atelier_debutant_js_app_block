@@ -1,7 +1,7 @@
 // localStorage.setItem('blogContent', JSON.stringify(blogContent));
 // Selection div #blog
 const blog = document.querySelector("#blog");
-const formsearch = document.querySelector('#formsearch');
+const search = document.querySelector('#search');
 
 // Fonction qui permet de creer des elements et les ajouter sur la page
 const create = (a, b, c, d = '') => {
@@ -19,13 +19,9 @@ const create = (a, b, c, d = '') => {
 }
 
 // Fonction qui permet de recuperer les elements de blog
-const renderPosts = async (term) => {
+const renderPosts = async () => {
     // lien qui permet de recuperer les fichiers json
-    let url = 'http://localhost:3000/posts?_sort=date&_order=desc';
-
-    if(term) {
-        url+=`&q${term}`
-    }
+    const url = 'http://localhost:3000/posts?_sort=date&_order=desc';
 
     const res = await fetch(url);
     const posts = await res.json();
@@ -54,10 +50,5 @@ const renderPosts = async (term) => {
         const p3 = create('p', div_content, 'date', post.date);
     });
 }
-
-search.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    renderPosts(formsearch.search.value.trim())
-})
 
 window.addEventListener('DOMContentLoaded', () => renderPosts());
