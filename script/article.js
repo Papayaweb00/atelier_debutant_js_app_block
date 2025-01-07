@@ -1,6 +1,7 @@
-localStorage.setItem('blogContent', JSON.stringify(blogContent));
+// localStorage.setItem('blogContent', JSON.stringify(blogContent));
 // Selection div #blog
 const blog = document.querySelector("#blog");
+const formsearch = document.querySelector('#formsearch');
 
 // Fonction qui permet de creer des elements et les ajouter sur la page
 const create = (a, b, c, d = '') => {
@@ -17,105 +18,46 @@ const create = (a, b, c, d = '') => {
     return element;
 }
 
-// boucle pour afficher les elements
-for (let i = 0; i < blogContent.length; i++) {
-    // Creation des div
-    // -----div container
-    const div = create('div', blog, `div_content`);
+// Fonction qui permet de recuperer les elements de blog
+const renderPosts = async (term) => {
+    // lien qui permet de recuperer les fichiers json
+    let url = 'http://localhost:3000/posts?_sort=date&_order=desc';
 
-    // -----div remplace image
-    const div2 = create('div', div, `form_img`);
-
-    // -----div content text
-    const div3 = create('div', div, `div_content_v`);
-
-    // ____titre article
-    const h2 = create('h2', div3, `titre`, blogContent[i].name);
-    // ____paragraphe article
-    const p = create('p', div3, 'text', blogContent[i].body);
-    // ____date article
-    const date = create('h3', div3, 'date', blogContent[i].date);
-    // ____div content btn
-    const contentbtn = create('div', div3, 'content_btn');
-    // _______btn modifier article_______
-    const btn = create('button', contentbtn, 'modif', 'Modifier');
-    // _______btn suppr article
-    const btn2 = create('button', contentbtn, 'suppr', 'Supprimer');
-
-    // ecouteur d'evenement pour supprimer
-    btn2.addEventListener('click', (e) => {
-        // accés à l'élément DOM 
-        // qui a déclenché un événement
-        const clickedButton = e.target;
-        //acces a l'ancêtre le plus proche de l'élément
-        const clickedDivContent = clickedButton.closest('.div_content');
-        // Ajout class
-        clickedDivContent.classList.add('supprimer');
-        // sauvegarde avec localStorage()
-        localStorage.setItem(`btn2-${i}`, 'supprimer');
-    })
-
-    // fonction pour regler sauvegarde de suppression
-    function supprdiv_content(a, b, index) {
-        //recuperation de la valeur stocke
-        const savebtn = localStorage.getItem(`btn2-${index}`);
-
-        // condition sauvegarde
-        if (savebtn === 'supprimer') {
-            // ajout class
-            a.classList.add(b);
-        } else {
-            // supprime class
-            a.classList.remove(b);
-        }
-        return a;
-    }
-    // Appel fonction
-    supprdiv_content(div, 'supprimer', i);
-
-    // ecouteur d'evenement pour modifier le text
-    btn.addEventListener('click', (e) => {
-        // accés à l'élément DOM 
-        // qui a déclenché un événement
-        const click = e.target;
-        //acces a l'ancêtre le plus proche de l'élément
-        const clickdiv = click.closest('.div_content');
-        // modification text
-        let modiftext = prompt('Mettez vos modifications.\nNB: Si vous ecrivez un mot cela va remplacer le texte deja ecrit.');
-        // Ajout text et class
-        if (modiftext) {
-            // Ajout text
-            p.innerText = modiftext;
-            // Ajout class
-            p.classList.add('modifier');
-            // Sauvegarde
-            localStorage.setItem(`modiftext${i}`, modiftext)
-            localStorage.setItem(`btn-${i}`, 'modifier');
-        }
-    })
-
-    // fonction pour regler sauvegarde de modification
-    function modif_divContent(r, t, index2) {
-        //recuperation de la valeur stocke
-        const modif = localStorage.getItem(`btn-${index2}`);
-
-        // condition sauvegarde
-        if (modif === 'modifier') {
-            // Ajout class
-            r.classList.add(t);
-            //recuperation de la deuxieme valeur stocke
-            const savedtext = localStorage.getItem(`modiftext${index2}`);
-            // Ajout text
-            if (savedtext) {
-                r.innerText = savedtext;
-            }
-        } else {
-            // supprime class
-            r.classList.remove(t);
-        }
-        return r;
+    if(term) {
+        url+=`&q${term}`
     }
 
-    // Appel function de sauvgarde modif
-    modif_divContent(p, 'modifier', i);
+    const res = await fetch(url);
+    const posts = await res.json();
+    // console.log(posts);
+    localStorage.setItem('div', JSON.stringify(posts))
+
+
+    // let template = '';
+    posts.forEach((post) => {
+        // Creation des div
+        // -----div container
+        const div_content = create('div', blog, 'div_content');
+        // -----div container titre, text ...
+        // -----div content titre
+        const h2 = create('h2', div_content, 'titre', post.title);
+        // -----div content likes
+        const p1 = create('p', div_content, 'like', `${post.likes} Likes`);
+         // -----div content text article
+        const p2 = create('p', div_content, 'text', post.Body.slice(0, 75));
+        p2.style.display = 'flex';
+        p2.style.flexDirection = 'column';
+        // ------div content affichage complete text
+        const a = create('a', p2, 'link', 'Voir plus....');
+        a.href = `../detail.html?id=${post.id}`;
+         // -----div content date article
+        const p3 = create('p', div_content, 'date', post.date);
+    });
 }
+
+search.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    renderPosts(formsearch.search.value.trim())
+})
+
+window.addEventListener('DOMContentLoaded', () => renderPosts());

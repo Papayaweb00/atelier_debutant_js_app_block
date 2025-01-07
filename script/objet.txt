@@ -60,3 +60,30 @@ let blogContent = [
         "date": "20/12/2000"
     }
 ]
+
+
+
+
+
+
+
+
+
+// localStorage.setItem('blogContent', JSON.stringify(blogContent));
+// Selection div #blog
+const blog = document.querySelector("#blog");
+
+// Fonction qui permet de creer des elements et les ajouter sur la page
+const create = (a, b, c, d = '') => {
+    // Creation element
+    let element = document.createElement(a);
+    // ajout class a l'element
+    element.classList.add(c);
+    // ajout du contenu
+    if (d) {
+        element.innerText = d;
+    }
+    // ajout de l'element sur la page
+    b.append(element);
+    return element;
+}

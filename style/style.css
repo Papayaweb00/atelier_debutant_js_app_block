@@ -36,6 +36,22 @@ body.moon #blog {
     color: var(--clair);
 }
 
+body.moon nav #nav_ul {
+    background-color: var(--sombre);
+}
+body.moon #detail {
+    color: white;
+}
+
+body.moon nav #nav_ul .top,
+body.moon nav #nav_ul li a {
+    color: var(--clair);
+}
+
+body.moon nav #nav_ul li {
+    padding: 10px 39px;
+}
+
 /* navbar */
 
 .nav_brand {
@@ -139,19 +155,19 @@ nav ul li a {
     display: flex;
     flex-direction: column;
     color: black;
-    padding: 25px;
+    padding: 45px;
     gap: 25px;
     border-radius: 15px;
 }
 
 form {
-    padding: 15px 95px;
+    padding: 15px 25px;
 }
 
 .ajout form fieldset .lab {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 19px;
 }
 
 .ajout form fieldset .lab label {
@@ -162,13 +178,22 @@ form {
     text-align: center;
     font-weight: bold;
     font-size: 1.7em;
+    padding: 0 11px;
 }
 
 input[type=text] {
     height: 5vh;
-    padding: 5px;
+    padding: 9px;
     font-size: 1.3em;
-    border-radius: 5px;
+    border-radius: 15px;
+    border: 1px solid black;
+    outline: none;
+}
+
+textarea {
+    padding: 15px;
+    font-size: 1.3em;
+    border-radius: 15px;
     border: 1px solid black;
     outline: none;
 }
@@ -188,12 +213,17 @@ input[type=submit] {
 #blog {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 25px;
+}
+
+/* ------------details blog----------------- */
+#detail {
+    padding: 100px 20px;
 }
 
 #blog .div_content {
     display: flex;
-    padding: 55px;
+    padding: 35px;
     flex-direction: column;
     align-items: start;
     gap: 15px;
@@ -202,7 +232,6 @@ input[type=submit] {
 .form_img {
     padding: 25px;
     height: 10%;
-    /* width: 10%; */
     border-radius: 10px;
     background-color: greenyellow;
 }
@@ -222,6 +251,21 @@ input[type=submit] {
 
 }
 
+.link {
+    color: rgb(64, 64, 253);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modif {
+    background-color: #18aa18;
+    color: white;
+}
+
+.suppr {
+    background-color: rgb(250, 24, 24);
+    color: white;
+}
+
 .modif,
 .suppr {
     font-size: 1em;
@@ -230,6 +274,15 @@ input[type=submit] {
     border-radius: 7px;
     border: none;
     cursor: pointer;
+    transition: box-shadow 200ms ease;
+}
+
+.modif:hover {
+    box-shadow: 0 .1rem 0.5rem #18aa18;
+}
+
+.suppr:hover {
+    box-shadow: 0 .1rem 0.5rem rgb(250, 24, 24);
 }
 
 /* -------------fin--------------- */
@@ -310,6 +363,10 @@ input[type=submit] {
         top: 0;
     }
 
+    #nav_ul li a {
+        color: var(--sombre);
+    }
+
     .top {
         display: flex;
         align-items: center;
@@ -351,3 +408,12 @@ input[type=submit] {
 
     /* fin */
 }
+
+/* @media screen and (max-width: 1024px) {
+    body.moon nav #nav_ul {
+        background-color: var(--clair);
+    }
+    body.moon nav #nav_ul li a {
+        color: var(--sombre);
+    }
+} */
