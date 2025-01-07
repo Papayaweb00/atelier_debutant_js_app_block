@@ -14,10 +14,10 @@ const createPost = async (e) => {
         date: dater
     }
 
-    await fetch ('http://localhost:3000/posts', {
+    await fetch('http://localhost:3000/posts', {
         method: 'POST',
         body: JSON.stringify(docs),
-        headers: {'Content-Type': 'application/json'}
+        headers: { 'Content-Type': 'application/json' }
     });
 
     window.location.replace('/index.html');

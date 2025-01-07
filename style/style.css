@@ -7,6 +7,40 @@
     --clair: white;
 }
 
+/* Footer */
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--sombre);
+    color: var(--clair);
+    justify-content: center;
+    /* align-items: center;  */
+    gap: 35px;
+    padding: 25px 0;
+    width: 100%;
+}
+
+footer .nav_brand {
+    font-size: 3em;
+    text-align: center;
+}
+
+footer #footer_ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.3em;
+    gap: 15px;
+    list-style: none;
+
+}
+
+footer #footer_ul li a {
+    text-decoration: none;
+    color: white;
+}
+/* fin */
+
 /* reset */
 * {
     margin: 0;
@@ -30,6 +64,13 @@ body.moon nav {
 body.moon nav .color button.active {
     background-color: var(--sombre);
     color: var(--clair);
+}
+body.moon footer {
+    background-color: var(--clair);
+    color: var(--sombre);
+}
+body.moon footer #footer_ul li a {
+    color: var(--sombre);
 }
 
 body.moon #blog {
@@ -378,6 +419,12 @@ input[type=submit] {
     }
 
     /* fin */
+
+    /* footer */
+    footer #footer_ul {
+        flex-direction: column;
+    }
+    
 }
 
 /* ---------Responsive cote mobile------------ */
@@ -391,13 +438,6 @@ input[type=submit] {
         gap: 15px;
     }
 
-    .form_img {
-        padding: 25px;
-        height: 10px;
-        border-radius: 10px;
-        background-color: greenyellow;
-    }
-
     /* fin */
 
     /* menubar respon mobile */
@@ -407,6 +447,22 @@ input[type=submit] {
     }
 
     /* fin */
+
+    form {
+        padding: 19px;
+    }
+
+    input[type=submit] {
+        width: 100%;
+    }
+
+    input[type=text] {
+        width: 90%;
+    }
+    
+    textarea {
+        width: 90%;
+    }
 }
 
 /* @media screen and (max-width: 1024px) {

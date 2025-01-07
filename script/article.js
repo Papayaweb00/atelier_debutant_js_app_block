@@ -25,7 +25,7 @@ const renderPosts = async () => {
 
     const res = await fetch(url);
     const posts = await res.json();
-    // console.log(posts);
+    // sauvegarde des donnees dans le localeStorage
     localStorage.setItem('div', JSON.stringify(posts))
 
 
@@ -41,6 +41,7 @@ const renderPosts = async () => {
         const p1 = create('p', div_content, 'like', `${post.likes} Likes`);
          // -----div content text article
         const p2 = create('p', div_content, 'text', post.Body.slice(0, 75));
+        // _____Styliser le paragraphe_____
         p2.style.display = 'flex';
         p2.style.flexDirection = 'column';
         // ------div content affichage complete text
