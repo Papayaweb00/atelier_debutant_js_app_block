@@ -45,7 +45,7 @@ const renderPosts = async () => {
         p2.style.display = 'flex';
         p2.style.flexDirection = 'column';
         // ------div content affichage complete text
-        const a = create('a', p2, 'link', 'Voir plus....');
+        const a = create('a', div_content, 'link', 'Voir plus....');
         a.href = `../detail.html?id=${post.id}`;
          // -----div content date article
         const p3 = create('p', div_content, 'date', post.date);
