@@ -95,7 +95,7 @@ const afficheblogcontent = (con) => {
         contentBlog = contentBlog.filter(pop => pop.id != id_select);
 
         localStorage.setItem('content', JSON.stringify(contentBlog));
-        // clickdiv.remove();
+        window.location.reload();
     });
 
     btnplus.addEventListener('click', function () {
