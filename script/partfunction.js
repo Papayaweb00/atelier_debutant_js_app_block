@@ -83,7 +83,7 @@ const afficheblogcontent = (con) => {
     });
     // gestion du button de suppression
     const btnsupp = create('button', contentBtn, 'suppr', 'Supprimer');
-    btnsupp.addEventListener('click', () => {
+    btnsupp.addEventListener('click', (e) => {
         // Montre le button clicke
         const click = e.target;
         // selectionne le parent de l'element selectionner
