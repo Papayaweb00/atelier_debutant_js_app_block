@@ -30,13 +30,19 @@
             <li><a href="#ajout">Ajouter des articles</a></li>
         </ul>
     </nav>
-    <h1 id="titre">Bienvenue dans mon blog</h1>
+    <h1 id="titre">
+        Bienvenue dans mon blog <br>
+        <span>Blog vide. <br>
+            Ecrire dans le formulaire pour ajouter votre article et le contenue
+        </span>
+    </h1>
     <div id="blog">
-        
+
     </div>
     <form id="m">
         <div class="lab">
             <label for="titre">Modifier le contenu de l'article</label>
+            <p><mark>NB: Seul le contenu de l'article peut etre modifier</mark></p>
             <textarea name="contentmodif" id="contentmodif" cols="30" rows="5"
                 placeholder="Modification de contenu de l'article"></textarea>
         </div>
@@ -48,11 +54,11 @@
             <fieldset>
                 <legend>Ajouter vos Article</legend>
                 <div class="lab">
-                    <label for="titre">Nom de l'article</label>
+                    <label for="title">Nom de l'article</label>
                     <input type="text" placeholder="Titre article" id="title" name="title">
                 </div>
                 <div class="lab">
-                    <label for="titre">Contenu de l'article</label>
+                    <label for="content">Contenu de l'article</label>
                     <textarea name="content" id="content" cols="30" rows="5"
                         placeholder="Contenu de l'article"></textarea>
                 </div>

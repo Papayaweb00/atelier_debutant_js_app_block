@@ -13,6 +13,7 @@ const formmodif = document.getElementById('m');
 const contentmodif = document.getElementById('contentmodif');
 const modifForm = document.getElementById('modifForm');
 let titreBienv = document.querySelector('#titre');
+let titreBienvs = document.querySelector('#titre span');
 const title = document.querySelector('#title');
 const content = document.querySelector('#content');
 let affplus = document.querySelector('.plus');

@@ -5,6 +5,7 @@ function changeFormColor(pop, color, colorb) {
         pop.style.backgroundColor = colorb;
     }, 1000);
 }
+
 // Confirm form
 function isFormInvalid() {
     return content.value.trim() === '' || title.value.trim() === '';
@@ -116,6 +117,12 @@ const afficheblogcontent = (con) => {
             btnplus.textContent = 'Voir plus';
         }
     })
+
+    if(blog !== '') {
+        titreBienvs.style.display = 'none';
+    } else {
+        titreBienvs.style.display = 'block';
+    }
 }
 
 let contentBlog = JSON.parse(localStorage.getItem('content')) || [];
@@ -123,6 +130,3 @@ contentBlog.forEach(blogcon => {
     // Appelle fonction afficheblogcontent() 
     afficheblogcontent(blogcon);
 });
-
-
-

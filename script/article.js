@@ -5,6 +5,7 @@ form.addEventListener('submit', (e) => {
         changeFormColor(form, 'red', 'initial');
     } else {
         changeFormColor(form, 'green', 'initial');
+        
         let contentBlogNew = {
             "id": ident,
             "name": title.value,
