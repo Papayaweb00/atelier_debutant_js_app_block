@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bebas+Neue&family=Cookie&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Lobster&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap');
+
+#blog #userundefined {
+    display: none;
+}
 
 /* Declaration variable */
 :root {
@@ -39,6 +44,10 @@ footer #footer_ul li a {
     color: white;
 }
 
+#foot_h2 {
+    text-align: center;
+}
+
 /* fin */
 
 /* reset */
@@ -50,10 +59,39 @@ footer #footer_ul li a {
     font-style: normal;
 }
 
+.plus {
+    cursor: pointer;
+}
+
 /* Fin reset */
+
+#titre {
+    text-align: center;
+    padding: 9px 0;
+    border: 3px ridge #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 1.3em;
+    font-family: "Playwrite AU SA", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    /* position: sticky;
+    top: 0; */
+}
+
+/* #titre.dis {
+    display: none;
+} */
 
 body.moon {
     background-color: var(--sombre);
+}
+
+body.moon #titre {
+    color: var(--clair);
+    border-color: #fff;
 }
 
 body.moon nav {
@@ -251,6 +289,51 @@ input[type=submit] {
     border: none;
 }
 
+/* ---fin_ajout */
+
+/* -----form modif------- */
+#m {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    top: 0%;
+    background-color: aqua;
+    bottom: 0;
+    left: 120%;
+    right: 0;
+    padding: 30px 0;
+    overflow: hidden;
+    transition: left 200ms ease;
+}
+
+#m .lab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+#m label {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#m textarea {
+    width: 91%;
+    height: 60vh;
+}
+
+/* __active-modif__ */
+#m.active {
+    left: 0;
+}
+
+#m.active #blog {
+    
+}
+
+/* fin modif */
 /* __fin formulaire__ */
 
 /* contenu du blog */
@@ -258,12 +341,13 @@ input[type=submit] {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
+    position: relative;
 }
 
 /* ------------details blog----------------- */
-#detail {
+/* #detail {
     padding: 100px 20px;
-}
+} */
 
 #blog .div_content {
     display: flex;
@@ -311,6 +395,10 @@ input[type=submit] {
     color: white;
 }
 
+.supprimer {
+    display: none;
+}
+
 #modif {
     /* width: 95%; */
     position: absolute;
@@ -331,6 +419,7 @@ input[type=submit] {
 .erreur {
     border: 3px solid red;
 }
+
 /* fin */
 
 .modif,
@@ -452,6 +541,17 @@ input[type=submit] {
         flex-direction: column;
     }
 
+    /* fin */
+    /*  */
+    #m label {
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+
+    #m textarea {
+        width: 79%;
+        height: 60vh;
+    }
 }
 
 /* ---------Responsive cote mobile------------ */
@@ -480,7 +580,7 @@ input[type=submit] {
     }
 
     input[type=submit] {
-        width: 100%;
+        width: 90%;
     }
 
     input[type=text] {

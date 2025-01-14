@@ -30,18 +30,17 @@
             <li><a href="#ajout">Ajouter des articles</a></li>
         </ul>
     </nav>
-    <h1 id="titre">Bienvenue dans mon blog</h1>
+
     <div id="blog">
 
     </div>
-    <form id="m">
+    <!-- <form id="m">
         <div class="lab">
-            <label for="titre">Modifier le contenu de l'article</label>
-            <textarea name="contentmodif" id="contentmodif" cols="30" rows="5"
-                placeholder="Modification de contenu de l'article"></textarea>
+            <label for="titre" >Modifier le contenu de l'article</label>
+            <textarea name="contentmodif" id="contentmodif" cols="30" rows="5" placeholder="Modification de contenu de l'article"></textarea>
         </div>
-        <input type="submit" value="modifier" class="modif" id="modifForm">
-    </form>
+        <input type="submit" value="modifier" class="modif">
+    </form> -->
     <section class="ajout" id="ajout">
 
         <form id="form" enctype="multipart/form-data">
@@ -53,8 +52,7 @@
                 </div>
                 <div class="lab">
                     <label for="titre">Contenu de l'article</label>
-                    <textarea name="content" id="content" cols="30" rows="5"
-                        placeholder="Contenu de l'article"></textarea>
+                    <textarea name="content" id="content" cols="30" rows="5" placeholder="Contenu de l'article"></textarea>
                 </div>
                 <input type="submit" value="Enregistrer" id="submit">
             </fieldset>
@@ -69,10 +67,11 @@
         </ul>
         <h2 id="foot_h2">&copy; 2025</h2>
     </footer>
-    <script src="script/variable.js" defer></script>
     <script src="script/mode_et_respon.js" async></script>
     <script src="script/article.js" defer></script>
-    <script src="./script/partfunction.js" defer></script>
+    <script src="script/objet.js" defer></script>
+ 
+    <!-- <script src="script/create.js" defer></script> -->
 </body>
 
 </html>

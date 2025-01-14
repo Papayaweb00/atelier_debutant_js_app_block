@@ -1,0 +1,264 @@
+window.addEventListener('DOMContentLoaded', () => {
+    // Selection div #blog
+    let blog = document.querySelector("#blog");
+    const form = document.getElementById('form');
+    const formulm = document.getElementById('m');
+    const title = document.querySelector('#title');
+    const content = document.querySelector('#content');
+    const contentmodif = document.querySelector('#contentmodif');
+    // content.textContent = 'Bonjour';
+    const dateform = new Date;
+    const dater = dateform.toLocaleDateString();
+
+
+
+
+
+    // Fonction qui permet de creer des elements et les ajouter sur la page
+    const create = (a, b, c, d = '') => {
+        // Creation element
+        let element = document.createElement(a);
+        // ajout class a l'element
+        element.classList.add(c);
+        // ajout du contenu
+        if (d) {
+            element.innerText = d;
+        }
+        // ajout de l'element sur la page
+        b.append(element);
+        return element;
+    }
+    /* fonction qui permet d'appeler 
+        les elements dans le localStorage*/
+    /* Fonction qui s'execute avec 
+    *let contentblog = 
+    *JSON.parse(localStorage.getItem('content')) || [];
+        Ajoute les elements qui sont dans objet.js*/
+    const afficheblogcontent = (con) => {
+        let identifiant = con.id;
+        const div_content = create('div', blog, 'div_content');
+        div_content.id = `user${identifiant}`;
+        // Enregitrer la variable dans une variable
+        let textType = `${con.body}`;
+        // Creation du titre de l'article dans le bloc
+        const h2 = create('h2', div_content, 'titre', con.name);
+        // Creation du text de l'article dans le bloc
+        const p = create('p', div_content, 'text', `${textType.slice(0, 70)}....`);
+        // btn affichant tout le text
+        const btnplus = create('button', div_content, 'plus', 'Voir plus');
+        // Creation du date de creation de l'article dans le bloc
+        const h3 = create('h3', div_content, 'date', con.date);
+        const contentBtn = create('div', div_content, 'content_btn');
+        const btnmodif = create('button', contentBtn, 'modif', 'Modifier');
+
+        // Execution du button de modification
+        // btnmodif.addEventListener('click', (e) => {
+        //     // Montre le button clicke
+        //     const click = e.target;
+        //     // console.log(click);
+
+        //     // Recupere le div clicke
+        //     const clickdiv = click.closest('.div_content');
+
+        //     // Recupere le div par son id en remplacant user
+        //     const id = clickdiv.id.replace('user', '');
+
+
+        //     // Champ pour saisir le text a modifier
+        //     let modiftext = prompt('Mettez vos modifications.\nNB: Si vous ecrivez un mot cela va remplacer le texte deja ecrit.');
+        //     // Condition pour mettre en place les modification
+        //     if (modiftext) {
+        //         // Modification du texte
+        //         p.innerText = modiftext;
+        //         // Ajouter une classe pour montrer qu'il est modifier
+        //         p.classList.add('modifier');
+        //         // Mettre à jour le localStorage 
+        //         /* Mis a jour du corps de l'element dans le 
+        //             tableau formeSaveToLocal si 
+        //                 l'id est present*/
+        //         formeSaveToLocal = formeSaveToLocal.map(item => {
+        //             if (item.id == id) {
+        //                 item.body = modiftext;
+        //                 window.location.reload();
+        //             }
+        //             return item;
+        //         });
+        //         /* Mis a jour du corps de l'element dans le 
+        //             tableau contentblog si 
+        //                 l'id est present*/
+        //         contentblog = contentblog.map(item => {
+        //             if (item.id == id) {
+        //                 item.body = modiftext;
+        //                 window.location.reload();
+        //             }
+        //             return item;
+        //         });
+        //         // Enregistrement des donnees de bloc dans localStorage 
+        //         localStorage.setItem('form', JSON.stringify(formeSaveToLocal)) || [];
+        //         localStorage.setItem('content', JSON.stringify(contentblog)) || [];
+        //     }
+
+        // });
+
+        const btnsupp = create('button', contentBtn, 'suppr', 'Supprimer');
+        // btnsupp.addEventListener('click', (e) => {
+        //     // Montre le button clicke
+        //     const click = e.target;
+        //     e.preventDefault();
+
+        //     // Recupere le div clicke
+        //     const clickdiv = click.closest('.div_content');
+
+        //     let id = clickdiv.id;
+
+        //     // Recupere le div par son id en remplacant user
+        //     let id_select = clickdiv.id.replace('user', '');
+
+        //     // blogContent = blogContent.splice(id_select)
+        //     // console.log(blogContent);
+        //     // if (blogContent) {
+        //     //     alert('Article supprimer');
+        //     // }
+
+        //     contentblog = contentblog.filter(item => item`.${id}` != id_select);
+        //     console.log(contentblog);
+
+        //     localStorage.setItem('content', JSON.stringify(contentblog));
+
+        //     // contentblog.pop(blogContent);
+        //     // console.log(contentblog);
+        //     // localStorage.setItem('content', JSON.stringify(blogContent)) || [];
+        //     // window.location.replace('../index.html')
+        //     // JSON.parse(localStorage.getItem('content')) ;
+        // })
+
+
+        btnplus.addEventListener('click', function () {
+            // Seletion du texte en le siblant
+            let text = this.previousElementSibling;
+            // console.log(text);
+
+            // Condition d'affichage
+            if (text.classList.toggle('tout')) {
+                // changement d'affichage en supprimant slice
+                text.textContent = textType;
+                // changement text-content
+                btnplus.textContent = 'Voir moin';
+            } else {
+                // changement d'affichage en ajoutant slice
+                text.textContent = textType.slice(0, 50) + '....';
+                // changement text-content
+                btnplus.textContent = 'Voir plus';
+            }
+        })
+    }
+
+    // Fin de la creation des fonctions
+
+
+    // Charger les tâches depuis localStorage avec un tableau creer
+    // Charge des elements du formulaire enregistrer
+
+    let formeSaveToLocal = JSON.parse(localStorage.getItem('form')) || [];
+
+    // Charge des elements objet.js
+    let contentblog = JSON.parse(localStorage.getItem('content')) || [];
+
+    // Fin charge
+
+    // Affichage des elements
+    formeSaveToLocal.forEach(v => {
+        // Appele de la fonction afficher()
+        afficheblogcontent(v)
+        // afficher(v, dater);
+    });
+
+    contentblog.forEach(blogcon => {
+        // Appele de la fonction afficheblogcontent()
+        afficheblogcontent(blogcon);
+    })
+    // Fin affichage
+    contentblog.push(blogContent);
+    // recuperation des donnees objet.js dans le localStorage
+    localStorage.setItem('content', JSON.stringify(blogContent));
+
+    let ident = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
+
+    form.addEventListener('submit', (e) => {
+        if (isFormInvalid()) {
+            e.preventDefault();
+            changeFormColor(form, 'red', 'white');
+        } else {
+            changeFormColor(form, 'green', 'white');
+
+            let newContent = {
+                'id': ident,
+                'name': title.value,
+                'body': content.value,
+                'date': dater
+            }
+        
+            let ajoutfich = Object.assign(blogContent, ...newContent);
+            // console.log(ajoutfich);
+            
+            contentblog.push(ajoutfich);
+            
+            localStorage.setItem('content', JSON.stringify(blogContent));
+        }
+    })
+
+    function isFormInvalid() {
+        return content.value.trim() === '' || title.value.trim() === '';
+    };
+})
+
+
+
+// Ajout de texte dans text
+// let t = `Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+//             Non sed ratione iusto voluptas illo officiis pariatur 
+//                 aperiam a totam, rerum fugiat delectus enim deserunt 
+//                     placeat fugit beatae ipsum accusamus molestias!`;
+
+// text.textContent = `${t.slice(0, 50)}....`;
+// // function in view text
+// affplus.addEventListener('click', function () {
+//     // Condition d'affichage
+//     if (text.classList.toggle('tout')) {
+//         // changement d'affichage en supprimant slice
+//         text.textContent = t;
+//         // changement text-content
+//         affplus.textContent = 'Voir moin';
+//     } else {
+//         // changement d'affichage en ajoutant slice
+//         text.textContent = t.slice(0, 50) + '....';
+//         // changement text-content
+//         affplus.textContent = 'Voir plus';
+//     }
+// });
+
+
+
+        // if (textChanger) {
+        // Modification du texte
+        // p.innerText = textChanger;
+        // Ajouter une classe pour montrer qu'il est modifier
+        // p.classList.add('modifier');
+        // Mettre à jour le localStorage 
+        /* Mis a jour du corps de l'element dans le 
+            tableau contentblog si 
+                l'id est present*/
+        // contentBlog = contentBlog.map(item => {
+        //     if (item.id == idSimple) {
+        //         item.body = textChanger;
+        //         window.location.reload();
+        //     }
+        //     return item;
+        // });
+
+        // contentBlog= {
+        //     ...contentBlog, 'body': textChanger
+        // }
+        // Enregistrement des donnees de bloc dans localStorage 
+        // localStorage.setItem('content', JSON.stringify(contentBlog)) || [];
+        // }
